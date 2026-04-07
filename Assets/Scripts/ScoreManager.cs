@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+    public TextMeshProUGUI scoreText;
     public int score;
 
     void Awake()
@@ -14,5 +16,8 @@ public class ScoreManager : MonoBehaviour
     {
         score += amount;
         Debug.Log(score);
+        if (scoreText != null) { 
+            scoreText.text = "Score: " + score;
+        }
     }
 }

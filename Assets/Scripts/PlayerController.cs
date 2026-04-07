@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;
     public float gravity = -20f;
 
+    public Camera cam1;
+    public Camera cam2;
+
     private int currentLane = 1;
     private float verticalVelocity;
     private CharacterController controller;
@@ -29,8 +32,30 @@ public class PlayerController : MonoBehaviour
             if (currentLane < 2) currentLane++;
 
         float targetX = (currentLane - 1) * laneDistance;
-        float deltaX = targetX - transform.position.x;
-        move.x = deltaX * laneChangeSpeed;
+        float currentX = transform.position.x;
+        float deltaX = targetX - currentX;
+
+        float snapThreshold = 0.05f;
+
+        // Calculate movement for this frame
+        float moveX = deltaX * laneChangeSpeed * Time.deltaTime;
+
+        // Check overshoot: if next position crosses target
+        bool willOvershoot = Mathf.Abs(moveX) > Mathf.Abs(deltaX);
+
+        if (Mathf.Abs(deltaX) < snapThreshold || willOvershoot)
+        {
+            // Snap to lane
+            Vector3 pos = transform.position;
+            pos.x = targetX;
+            transform.position = pos;
+            move.x = 0;
+        }
+        else
+        {
+            // Smooth movement
+            move.x = deltaX * laneChangeSpeed;
+        }
 
         if (controller.isGrounded)
         {
@@ -44,5 +69,27 @@ public class PlayerController : MonoBehaviour
 
         move.y = verticalVelocity;
         controller.Move(move * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            if (cam1 != null && cam2 != null) {
+                switchCamera();
+            }
+        }
     }
-}
+
+    void switchCamera()
+    {
+       
+        if (cam1.targetDisplay == 1)
+        {
+            cam2.targetDisplay = 1;
+            cam1.targetDisplay = 0;
+        }
+        else
+        {
+            cam2.targetDisplay = 0;
+            cam1.targetDisplay = 1;
+        }
+    }
+}   
