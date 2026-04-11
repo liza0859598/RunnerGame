@@ -5,4 +5,5 @@ public class EnemyData : SpawnableData
 {
     public int health = 3;
     public int damage = 1;
+    public int cost = 50;
 }

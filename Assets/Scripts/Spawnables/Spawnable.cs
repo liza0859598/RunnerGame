@@ -3,10 +3,10 @@ using UnityEngine;
 using static UnityEngine.Analytics.IAnalytic;
 
 public abstract class Spawnable : MonoBehaviour
-{
-    public GameObject PositionTarget;
+{    
     public CharacterController characterController;
 
+    internal GameObject PositionTarget;
     internal SpawnType spawnType;
     internal float spawnTime;
     internal float speed;
@@ -34,7 +34,9 @@ public abstract class Spawnable : MonoBehaviour
 
     public IEnumerator Spawn()
     {
+        print("done"); 
         yield return new WaitForSeconds(spawnTime);
+        print("done1");
         isSpawned = true;
     }
 

@@ -14,7 +14,7 @@ public class TrackManager : MonoBehaviour
 
     private List<GameObject> lanes = new List<GameObject>();
 
-    void Start()
+    void Awake()
     {
         foreach (Transform lane in transform) {
             lanes.Add(lane.gameObject);
@@ -29,18 +29,19 @@ public class TrackManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            spawn(spawnables[1]);
+            spawn(spawnables[1], 1);
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            spawn(spawnables[2]);
+            spawn(spawnables[2], 2);
         }
     }
 
-    void spawn(Spawnable spawnable, int laneIndex = 0) 
+    public Spawnable spawn(Spawnable spawnable, int laneIndex = 0) 
     {
         float distance = distFront;
         GameObject PositionTarget = lanes[laneIndex].transform.GetChild(0).gameObject;
+        
         if (spawnable.spawnType == SpawnType.back) {
             distance = distBack;
             PositionTarget = lanes[laneIndex].transform.GetChild(1).gameObject;
@@ -49,5 +50,7 @@ public class TrackManager : MonoBehaviour
         Vector3 spawnPosition = new Vector3(lanes[laneIndex].transform.position.x, lanes[laneIndex].transform.position.y, lanes[laneIndex].transform.position.z + distance);
         Spawnable instance = Instantiate(spawnable, spawnPosition, new Quaternion());
         instance.PositionTarget = PositionTarget;
+
+        return instance;
     }
 }

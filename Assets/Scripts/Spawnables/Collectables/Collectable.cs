@@ -19,6 +19,7 @@ public class Collectable : Spawnable
         if (other.gameObject == PositionTarget.gameObject)
         {
             Destroy(this);
+            print("done");
         }
     }
 }

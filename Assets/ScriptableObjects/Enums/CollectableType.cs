@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public enum CollectableType {Ammo, Scraps, Powder}
+public enum CollectableType {Ammo, Scrap, Powder}
