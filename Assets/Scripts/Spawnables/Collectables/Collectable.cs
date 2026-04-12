@@ -12,14 +12,14 @@ public class Collectable : Spawnable
         spawnType = data.spawnType;
         spawnTime = data.spawnTime;
         speed = data.speed;
+        StartCoroutine(Spawn());
     }
 
     private new void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PositionTarget.gameObject)
+        if (other.gameObject == PositionTarget)
         {
-            Destroy(this);
-            print("done");
+            Destroy(gameObject);
         }
     }
 }

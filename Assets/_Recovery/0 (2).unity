@@ -389,10 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7570dc848d86764e82f3ba62a7d96b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources:
-  - {fileID: -5062687381299109463, guid: 66ae66fd272aa2045a3c31ef76f7c1ea, type: 3}
-  - {fileID: -5062687381299109463, guid: dd8229e17c0b9c740a15bfcce22f9bf9, type: 3}
-  - {fileID: -5062687381299109463, guid: a09a8f4a696ad354e9b41e65c40868b1, type: 3}
+  resources: []
   trackData: {fileID: 11400000, guid: 811be5a971a1d1d48bc2b2850c463b0f, type: 2}
   distFront: 50
   distBack: -10
@@ -1864,6 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb77711759a0dd4c81cf4c5591df2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  characterController: {fileID: 2033792903}
   playerData: {fileID: 11400000, guid: 9ff64cb014d70f7469fad5c88061e5f3, type: 2}
 --- !u!1001 &2045412571
 PrefabInstance:

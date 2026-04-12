@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI resourceText;
 
+    public Bullet bullet;
+
     internal List<CollectableType> inventory = new List<CollectableType>(); 
     
 
@@ -20,10 +22,14 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space) && ammoCount > 0)
+        {
+            Instantiate(bullet, transform.position + bullet.transform.position, transform.rotation);
+            addAmmo(-1);
+        }
     }
 
-    void craft(List<CollectableType> items)
+    void Craft(List<CollectableType> items)
     {
         if (items.Contains(CollectableType.Scrap) &&
             items.Contains(CollectableType.Powder))
@@ -52,7 +58,7 @@ public class InventoryManager : MonoBehaviour
                 
                 if (inventory.Count > 1)
                 {
-                    craft(inventory);                
+                    Craft(inventory);                
                 }
                 Destroy(other.gameObject);
             }

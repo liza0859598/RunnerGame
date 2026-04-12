@@ -389,9 +389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7570dc848d86764e82f3ba62a7d96b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources:
-  - {fileID: -5062687381299109463, guid: 66ae66fd272aa2045a3c31ef76f7c1ea, type: 3}
+  spawnables:
   - {fileID: -5062687381299109463, guid: dd8229e17c0b9c740a15bfcce22f9bf9, type: 3}
+  - {fileID: 1816593061596750417, guid: 46739a6e5ae6a4b4e8617b58fef2abfe, type: 3}
   - {fileID: -5062687381299109463, guid: a09a8f4a696ad354e9b41e65c40868b1, type: 3}
   trackData: {fileID: 11400000, guid: 811be5a971a1d1d48bc2b2850c463b0f, type: 2}
   distFront: 50
@@ -414,6 +414,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1816593061596750417, guid: 46739a6e5ae6a4b4e8617b58fef2abfe, type: 3}
   trackManager: {fileID: 314905848}
+  dangerText: {fileID: 642192498}
 --- !u!1 &353115828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,12 +1669,13 @@ GameObject:
   - component: {fileID: 2033792897}
   - component: {fileID: 2033792896}
   - component: {fileID: 2033792895}
+  - component: {fileID: 2033792900}
   - component: {fileID: 2033792893}
   - component: {fileID: 2033792903}
   - component: {fileID: 2033792902}
   - component: {fileID: 2033792901}
+  - component: {fileID: 2033792904}
   - component: {fileID: 2033792905}
-  - component: {fileID: 2033792906}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1780,6 +1782,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2033792900
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033792892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.4727937
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.26360315, z: 0}
 --- !u!114 &2033792901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,6 +1861,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2033792904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033792892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 2.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2033792905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,20 +1897,6 @@ MonoBehaviour:
   ammoCount: 0
   ammoText: {fileID: 130166605}
   resourceText: {fileID: 1482113299}
-  bullet: {fileID: 3843888226163235019, guid: 840439b261fc0ee4bba496da35e49913, type: 3}
---- !u!114 &2033792906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033792892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb77711759a0dd4c81cf4c5591df2dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
-  playerData: {fileID: 11400000, guid: 9ff64cb014d70f7469fad5c88061e5f3, type: 2}
 --- !u!1001 &2045412571
 PrefabInstance:
   m_ObjectHideFlags: 0

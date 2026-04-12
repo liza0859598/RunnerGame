@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
     public List<WaveData> waves;
-    public List<Spawnable> enemies;
+    public List<Enemy> enemies;
 
     public TrackManager trackManager;
 
@@ -25,7 +26,7 @@ public class WaveManager : MonoBehaviour
         {
             GainDanger();
             CheckWaveEnd();
-        } 
+        }
     }
 
     void GainDanger()
@@ -35,17 +36,7 @@ public class WaveManager : MonoBehaviour
 
     void TrySpawnEnemy()
     {
-        int maxCost = int.MinValue;
-        Enemy enemy = null;
-
-        foreach (Enemy en in enemies)
-        {
-            if (en.cost > maxCost)
-            {
-                maxCost = en.cost;
-                enemy = en;
-            }
-        }
+        Enemy enemy = enemies[Random.Range(0, enemies.Count - 1)];
 
         if (dangerPoints >= enemy.cost)
         {
@@ -58,7 +49,7 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
-    
+
 
     void Spawn(Enemy enemy, int laneIndex)
     {

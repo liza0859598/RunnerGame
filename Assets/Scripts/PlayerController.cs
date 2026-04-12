@@ -14,7 +14,7 @@ public class PlayerControler : MonoBehaviour
     {
         currentLane = lanes.Length / 2;
         transform.position = lanes[currentLane].transform.position;
-        
+        characterController.detectCollisions = false;
     }
 
     void Update()

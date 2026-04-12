@@ -11,11 +11,6 @@ public class CameraFollow : MonoBehaviour
     {        
         Vector3 target = player.position + offset;
         Vector3 currentDirection = (target - transform.position).normalized;
-        //if (Mathf.Approximately(target.x, transform.position.x))
-        //{
-        //    transform.position = target;
-        //}
         transform.position = Vector3.Lerp(transform.position, target, smoothSpeed * Time.deltaTime);
-
     }
 }

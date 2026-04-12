@@ -4,8 +4,6 @@ using static UnityEngine.Analytics.IAnalytic;
 
 public abstract class Spawnable : MonoBehaviour
 {    
-    public CharacterController characterController;
-
     internal GameObject PositionTarget;
     internal SpawnType spawnType;
     internal float spawnTime;
@@ -14,14 +12,6 @@ public abstract class Spawnable : MonoBehaviour
     internal bool isSpawned = false;
     internal bool isAtPosition = false;
 
-    void Start()
-    {
-    }
-
-    public void Awake()
-    {
-        StartCoroutine(Spawn());
-    }
 
     void Update()
     {
@@ -34,9 +24,7 @@ public abstract class Spawnable : MonoBehaviour
 
     public IEnumerator Spawn()
     {
-        print("done"); 
         yield return new WaitForSeconds(spawnTime);
-        print("done1");
         isSpawned = true;
     }
 
@@ -44,8 +32,11 @@ public abstract class Spawnable : MonoBehaviour
     {
         if (!isAtPosition)
         {
-            Vector3 direction = (PositionTarget.transform.position - transform.position).normalized;
-            characterController.Move(direction * speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                PositionTarget.transform.position,
+                speed * Time.deltaTime
+            );
             return;
         }
         else
@@ -64,7 +55,7 @@ public abstract class Spawnable : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == PositionTarget.gameObject)
+        if (other.gameObject == PositionTarget)
         {
             isAtPosition = false;
         }

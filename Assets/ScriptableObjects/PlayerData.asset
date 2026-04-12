@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d7d7a79dd8bab4fbb93b54c7e6289a, type: 3}
-  m_Name: EnemyShooter
-  m_EditorClassIdentifier: 
-  spawnType: 1
-  spawnTime: 2
-  speed: 5
+  m_Script: {fileID: 11500000, guid: c7b1d1487da4ea34e9dff87210e2dd74, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   health: 3
   damage: 1
-  cost: 50
