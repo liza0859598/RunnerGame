@@ -64,6 +64,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,9 +87,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &3544829267062218663
 SphereCollider:
@@ -206,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2700825889033642964, guid: 2f05f6b07d96a664a8807eb4dd5d46bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 2700825889033642964, guid: 2f05f6b07d96a664a8807eb4dd5d46bf, type: 3}
       propertyPath: m_LocalRotation.w

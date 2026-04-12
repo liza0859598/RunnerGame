@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(target)) {
-            other.gameObject.GetComponent<Damagable>().health -= damage;
+            other.gameObject.GetComponent<Damagable>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

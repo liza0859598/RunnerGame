@@ -3,7 +3,9 @@ using UnityEngine;
 using static UnityEngine.Analytics.IAnalytic;
 
 public abstract class Spawnable : MonoBehaviour
-{    
+{
+    public SpawnableData data;
+
     internal GameObject PositionTarget;
     internal SpawnType spawnType;
     internal float spawnTime;
@@ -12,6 +14,14 @@ public abstract class Spawnable : MonoBehaviour
     internal bool isSpawned = false;
     internal bool isAtPosition = false;
 
+
+    public virtual void Awake()
+    {
+        spawnType = data.spawnType;
+        spawnTime = data.spawnTime;
+        speed = data.speed;
+        StartCoroutine(Spawn());
+    }
 
     void Update()
     {
@@ -45,15 +55,15 @@ public abstract class Spawnable : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PositionTarget.gameObject)
+        if (other.gameObject == PositionTarget)
         {
             isAtPosition = true;
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject == PositionTarget)
         {

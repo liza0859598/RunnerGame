@@ -7,6 +7,7 @@ using System.Collections;
 public class TrackManager : MonoBehaviour
 {
     public Spawnable[] resources;
+    public Obstacle[] obstacles;
     public TrackData trackData;
     public float distFront = 50.0f;
     public float distBack = -5.0f;
@@ -26,6 +27,7 @@ public class TrackManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnResource());
+        StartCoroutine(SpawnObstacle());
     }
 
     void Update()
@@ -47,7 +49,7 @@ public class TrackManager : MonoBehaviour
     {
         Spawnable instance = Instantiate(spawnable);
 
-        float distance = distFront;
+        float distance = distFront + spawnable.transform.position.z;
         GameObject PositionTarget = lanes[laneIndex].transform.GetChild(0).gameObject;
 
         if (instance.spawnType == SpawnType.back)
@@ -72,9 +74,19 @@ public class TrackManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         int laneIndex = Random.Range(0, lanes.Count);
-        int resourceIndex = Random.Range(0, resources.Length);
+        int index = Random.Range(0, resources.Length);
 
-        spawn(resources[resourceIndex], laneIndex);
+        spawn(resources[index], laneIndex);
         StartCoroutine(SpawnResource());
+    }
+
+    IEnumerator SpawnObstacle()
+    {
+        yield return new WaitForSeconds(1f);
+        int laneIndex = Random.Range(0, lanes.Count);
+        int index = Random.Range(0, obstacles.Length);
+
+        spawn(obstacles[index], laneIndex);
+        StartCoroutine(SpawnObstacle());
     }
 }

@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class Collectable : Spawnable
 {
-    public CollectableData data;
+    public new CollectableData data;
 
     internal CollectableType type;
 
-    void Start()
+    public override void Awake()
     {
         type = data.type;
-        spawnType = data.spawnType;
-        spawnTime = data.spawnTime;
-        speed = data.speed;
-        StartCoroutine(Spawn());
+        base.Awake();
     }
 
-    private new void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (other.gameObject == PositionTarget)
         {
             Destroy(gameObject);
