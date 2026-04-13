@@ -12,6 +12,9 @@ public class TrackManager : MonoBehaviour
     public float distFront = 50.0f;
     public float distBack = -5.0f;
 
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     internal float speed;
 
     private List<GameObject> lanes = new List<GameObject>();
