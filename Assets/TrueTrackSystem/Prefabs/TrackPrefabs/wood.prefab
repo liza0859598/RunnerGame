@@ -69,6 +69,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 606c8270b2bbfc542841d66af63b8f2f, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 606c8270b2bbfc542841d66af63b8f2f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8830f781598428d4a8217b768c09db74, type: 2}
@@ -105,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawnable
   data: {fileID: 11400000, guid: c8f538cef421f9849b9619ee37e9e3cf, type: 2}
+  PositionTarget: {fileID: 0}
 --- !u!65 &6412986400947792645
 BoxCollider:
   m_ObjectHideFlags: 0

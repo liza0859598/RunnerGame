@@ -18,6 +18,14 @@ public class Player : Damagable
         
     }
 
+    public override void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            Time.timeScale = 0;
+        }
+    }
+
     public override void Update()
     {
         CheckHealth();

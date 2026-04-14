@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TrackManager : MonoBehaviour
 {
@@ -37,16 +38,10 @@ public class TrackManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J)) {
-            spawn(resources[0]);
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            spawn(resources[1], 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            spawn(resources[2], 2);
+            Time.timeScale = 1;
+            SceneManager.LoadScene("RunnerGame");
         }
     }
 

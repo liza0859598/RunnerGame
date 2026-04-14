@@ -30,6 +30,7 @@ public class Obstacle : Spawnable
         if (damagable != null)
         {
             damagable.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

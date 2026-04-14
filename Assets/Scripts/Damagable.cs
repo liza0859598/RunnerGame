@@ -6,7 +6,7 @@ public class Damagable : Spawnable
     internal int damage;
 
 
-    public void CheckHealth()
+    public virtual void CheckHealth()
     {
         if (health <= 0)
         {
