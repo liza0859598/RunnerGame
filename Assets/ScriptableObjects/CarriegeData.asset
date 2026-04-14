@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
   spawnType: 0
   spawnTime: 0
-  speed: 50
+  speed: 55

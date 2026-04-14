@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine;
 using static UnityEngine.Analytics.IAnalytic;
 
-public abstract class Spawnable : MonoBehaviour
+public class Spawnable : MonoBehaviour
 {
     public SpawnableData data;
 
-    internal GameObject PositionTarget;
+    public GameObject PositionTarget;
     internal SpawnType spawnType;
     internal float spawnTime;
     internal float speed;
@@ -23,7 +23,7 @@ public abstract class Spawnable : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (!isSpawned)
         {

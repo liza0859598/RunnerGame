@@ -5,7 +5,8 @@ public abstract class Enemy : Damagable
 {
     public new EnemyData data;
     public Bullet bullet;
-
+    
+    internal Animator animator;
     internal int cost;
 
     private bool isShooting = false;
@@ -20,10 +21,12 @@ public abstract class Enemy : Damagable
         health = data.health;
         damage = data.damage;
         cost = data.cost;
+        animator = GetComponentInChildren<Animator>();
         base.Awake();
+        
     }
 
-    void Update()
+    public override void Update()
     {
         if (!isSpawned) {
             return;
@@ -40,6 +43,7 @@ public abstract class Enemy : Damagable
 
     public IEnumerator Shoot()
     {
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(1.15f);
         Instantiate(bullet, transform.position + bullet.transform.position, transform.rotation);
         isShooting = false;

@@ -19,14 +19,15 @@ public class Bullet : MonoBehaviour
     public IEnumerator Shoot()
     {
         yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        Destroy(GetComponent<MeshRenderer>());
+        Destroy(GetComponent<Collider>());
+        yield return new WaitForSeconds(2.0f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(target)) {
-            other.gameObject.GetComponent<Damagable>().TakeDamage(damage);
-            Destroy(gameObject);
+            other.gameObject.GetComponent<Damagable>().TakeDamage(damage);            
         }
     }
 }

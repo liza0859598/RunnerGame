@@ -18,10 +18,10 @@ public class Player : Damagable
         
     }
 
-   void Update()
-   {
+    public override void Update()
+    {
         CheckHealth();
-   }
+    }
 
     public override void TakeDamage(int dmg)
     {

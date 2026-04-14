@@ -4,6 +4,7 @@ public class PlayerControler : MonoBehaviour
 {
     public GameObject[] lanes;
     public CharacterController characterController;
+    public Animator animator;
 
     public float laneChangeSpeed = 10f;
 
@@ -17,30 +18,39 @@ public class PlayerControler : MonoBehaviour
         characterController.detectCollisions = false;
     }
 
+    void Awake()
+    {
+           animator = GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (currentLane > 0)
             {
+                animator.SetTrigger("MoveLeft");
                 currentLane--;
                 isSwitchingLanes = true;
             }
         }
+
         else if (Input.GetKeyDown(KeyCode.D))
         {
             if (currentLane < lanes.Length - 1)
             {
+                animator.SetTrigger("MoveRight");
                 currentLane++;
-                isSwitchingLanes = true;
+                isSwitchingLanes = true; 
             }
         }
 
         if (isSwitchingLanes)
         {
             float directionX = Mathf.Sign(lanes[currentLane].transform.position.x - transform.position.x);
-            characterController.Move(new Vector3(directionX, 0, 0) * laneChangeSpeed *  Time.deltaTime);
-        }        
+            characterController.Move(new Vector3(directionX, 0, 0) * laneChangeSpeed * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter(Collider other)

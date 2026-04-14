@@ -8,6 +8,7 @@ public class TrackManager : MonoBehaviour
 {
     public Spawnable[] resources;
     public Obstacle[] obstacles;
+    public Spawnable decor;
     public TrackData trackData;
     public float distFront = 50.0f;
     public float distBack = -5.0f;
@@ -31,6 +32,7 @@ public class TrackManager : MonoBehaviour
     {
         StartCoroutine(SpawnResource());
         StartCoroutine(SpawnObstacle());
+        StartCoroutine(Decorate());
     }
 
     void Update()
@@ -91,5 +93,16 @@ public class TrackManager : MonoBehaviour
 
         spawn(obstacles[index], laneIndex);
         StartCoroutine(SpawnObstacle());
+    }
+
+    IEnumerator Decorate()
+    {    
+        for (int i = 0; i < lanes.Count; i++)
+        {
+            spawn(decor, i);
+        }
+        yield return new WaitForSeconds(0.15f);
+
+        StartCoroutine(Decorate()); 
     }
 }

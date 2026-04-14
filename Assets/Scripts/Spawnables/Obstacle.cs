@@ -6,6 +6,11 @@ public class Obstacle : Spawnable
     public int damage = 1;
     public bool isUnstopable = false;
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     public override void OnTriggerEnter(Collider other)
     {       
         if (other.gameObject == PositionTarget)
